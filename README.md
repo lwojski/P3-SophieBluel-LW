@@ -1,8 +1,5 @@
-# Portfolio-architecte-sophie-bluel
+# SCÉNARIO - PORTFOLIO SOPHIE BLUEL
 
-Code du projet 6 d'intégrateur web.
+Vous travaillez comme développeur front-end pour l’agence ArchiWebos qui comprend 50 salariés. 
 
-## Information pour le lancer le code
-
- - Lancer le backend depuis votre terminal en suivant les instruction du fichier ReadMe.
- - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème
+Ayant terminé votre dernier projet avec un peu d'avance, vous êtes envoyé en renfort comme développeur front-end d’une équipe qui travaille sur la conception du site portfolio d’une architecte d’intérieur.

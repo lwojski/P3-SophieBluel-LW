@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background: #FFFEF8;
 }
 header {
 	display: flex;
@@ -93,6 +94,11 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+}
+
+nav a {
+	text-decoration: none;
+	color: inherit;
 }
 
 li:hover {
@@ -137,7 +143,7 @@ li:hover {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	color: #1D6154;
-	background-color: white;
+	background-color: #FFFEF8;
 	font-size: 16px;
 	font-weight: 700;
 	font-family: 'Syne';
@@ -149,8 +155,53 @@ li:hover {
 
 .categorie:hover {
 	background-color: #1D6154;
-	color: white;
+	color: #FFFEF8;
 }
+
+/***** CONNEXION *****/
+
+.connexion {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	margin-top: 120px;
+	margin-bottom: 315px;
+}
+
+.connexion h2 {
+	margin-bottom: 20px;
+}
+
+.connexion form {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	width: 33%;
+}
+
+.connexion input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.connexion label {
+	margin: 2em 0 0.5em 0;
+}
+
+.connexion input[type="submit"]{
+	height: 36px;
+	font-size: 14px;
+	margin : 3em auto ;
+}
+
+.connexion a {
+	color: inherit;
+}
+
+/***** end connexion *****/
 
 .gallery {
 	width: 100%;
@@ -205,6 +256,11 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+.connexion input[type="submit"]{
+	height: 36px;
+	font-size: 14px;
 }
 
 footer nav ul {

@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="main.js" defer async type="module"></script>
+	<script src="login.js" defer async type="module"></script>
 </head>
 <body>
 <header>
@@ -26,12 +26,12 @@
 <main>
     <section id="connexion-form" class="connexion">
 		<h2>Log In</h2>
-        <form action="#" method="post">
+        <form action="#">
 			<label for="email">E-mail</label>
-			<input type="email" name="email" id="email">
+			<input type="email" name="email" id="email" required>
             <label for="password">Mot de passe</label>
-			<input type="text" name="password" id="password">
-            <input type="submit" value="Se connecter">
+			<input type="text" name="password" id="password" required>
+            <input type="submit" class="submitInfo" value="Se connecter">
 		</form>
         <a href="#">Mot de passe oublié</a>
 </main>

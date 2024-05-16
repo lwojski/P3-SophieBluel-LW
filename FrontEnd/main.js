@@ -1,6 +1,5 @@
 import {getCategories, getWorks} from "./assets/js/api.js"
 import {createCategory, createCategoryAll, createWork, adminRights} from "./assets/js/element.js"
-import {categorieObjets, categorieAppartements, categorieHotelsEtRestaurants, categorieTous} from "./assets/js/filtres.js"
 
 // APPEL - CATÉGORIES & WORKS
 const categories = await getCategories()
@@ -15,17 +14,27 @@ works.forEach(work => {
 })
 
 // FILTRES
-const filtreObjets = document.querySelector('button.categorie[value="1"]')
-    filtreObjets.addEventListener('click', categorieObjets)
 
-const filtreAppartements = document.querySelector('button.categorie[value="2"]')
-    filtreAppartements.addEventListener('click', categorieAppartements)
+function filterWorksByCategory(categoryId) {
+    const workCards = document.querySelectorAll('.gallery figure')
+    workCards.forEach((workCard) => {
+        const workCategoryId = workCard.getAttribute('category-id')
+        if (workCategoryId == categoryId || categoryId === '0') {
+            workCard.style.display = 'block'
+        } else {
+            workCard.style.display = 'none'
+        }
+    })
+}
+const categoriesElement = document.querySelectorAll('button.categorie')
+categoriesElement.forEach(category => {
+    category.addEventListener('click', (e) => {
+        console.log(e.currentTarget.value)
+        const CategoryId = e.currentTarget.value
 
-const filtreHotelsEtRestaurants = document.querySelector('button.categorie[value="3"]')
-    filtreHotelsEtRestaurants.addEventListener('click', categorieHotelsEtRestaurants)
-
-const filtreTous = document.querySelector('button.categorie[value="0"]')
-    filtreTous.addEventListener('click', categorieTous)
+        filterWorksByCategory(CategoryId)
+    })
+})
 
 // ADMIN
 

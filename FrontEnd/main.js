@@ -1,5 +1,5 @@
 import {getCategories, getWorks} from "./assets/js/api.js"
-import {createCategory, createCategoryAll, createWork} from "./assets/js/element.js"
+import {createCategory, createCategoryAll, createWork, adminRights} from "./assets/js/element.js"
 import {categorieObjets, categorieAppartements, categorieHotelsEtRestaurants, categorieTous} from "./assets/js/filtres.js"
 
 // APPEL - CATÉGORIES & WORKS
@@ -26,3 +26,7 @@ const filtreHotelsEtRestaurants = document.querySelector('button.categorie[value
 
 const filtreTous = document.querySelector('button.categorie[value="0"]')
     filtreTous.addEventListener('click', categorieTous)
+
+// ADMIN
+
+await adminRights()

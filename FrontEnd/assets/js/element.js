@@ -1,4 +1,4 @@
-// CRÉATION DES ÉLEMENTS HTML
+// CRÉATION ET GESTION DES ÉLEMENTS HTML
 
 // FILTRES & CATÉGORIES
 export function createCategory(category) {
@@ -36,4 +36,43 @@ export function createWork(work) {
     workCard.appendChild(workImage)
     workCard.appendChild(workTitle)
     gallery.appendChild(workCard)
+}
+
+// ADMIN MODE
+
+export async function adminRights() {
+    const token = sessionStorage.getItem('token')
+
+    if (token) {
+        // (Gestion des élements en session admin)
+        document.querySelector('.filtres').style.display = 'none'
+        document.getElementById('loginButton').innerText = 'logout'
+
+        const editBtn = document.createElement('span')
+        editBtn.classList.add('editButton')
+        editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Modifier'
+
+        const sectionH2 = document.querySelector('#portfolio h2')
+        sectionH2.style.margin = '0px 0px 147px 0px'
+        sectionH2.appendChild(editBtn)
+
+        const body = document.querySelector('body')
+        const topBar = document.createElement('div')
+        topBar.className = 'topBar'
+        const topBarText = document.createElement('p')
+        topBarText.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Mode édition'
+
+        body.insertAdjacentElement('afterbegin', topBar)
+        topBar.append(topBarText)
+
+        const header = document.querySelector('header')
+        header.style.margin = '108px 0px'
+        
+        // (Gestionnaire de déconnexion en cliquant sur logout)
+        const logoutButton = document.getElementById('loginButton')
+        logoutButton.addEventListener('click', function () {
+        sessionStorage.removeItem('token')
+        window.location.replace('login.html')
+    })
+    }
 }

@@ -53,6 +53,19 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	background: #FFFEF8;
+
+.topBar {
+	display: flex;
+	justify-content: center;
+	background-color: #000000;
+	color: white;
+	padding: 22px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
 }
 header {
 	display: flex;
@@ -85,6 +98,7 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -128,8 +142,23 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin-bottom: 2em;
+}
+
+.editButton {
+	font-family: 'Work Sans';
+	color: #000000;
+	position: relative;
+	font-size: 14px;
+	font-weight: 400;
+	left: 20px;
+}
+
+.editButton .fa-regular {
+	font-size: 16px;
 }
 
 .filtres {

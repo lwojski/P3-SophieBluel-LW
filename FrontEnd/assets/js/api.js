@@ -2,20 +2,19 @@
 
 const url='http://localhost:5678/api/'
 
-// (CATÉGORIES)
+// CATÉGORIES
 export async function getCategories() {
     return fetch(`${url}categories`)
         .then(response => response.json())
 }
 
-// (WORKS)
+// WORKS
 export async function getWorks() {
     return fetch(`${url}works`)
         .then(response => response.json())
 }
 
 // LOGIN
-
 export async function login () {
 
     document.addEventListener('submit', (event) => {
@@ -38,6 +37,7 @@ export async function login () {
             }),
         })
         .then(response => response.json())
+        // (Stockage du token d'authentification)
         .then((data) => {
             if (data.message) {
                 alert("Erreur dans l’identifiant ou le mot de passe")

@@ -39,23 +39,24 @@ export function createWork(work) {
 }
 
 // ADMIN MODE
-
 export async function adminRights() {
     const token = sessionStorage.getItem('token')
 
     if (token) {
-        // (Gestion des élements en session admin)
+        // (GESTION DES ELEMENTS - ADMIN)
         document.querySelector('.filtres').style.display = 'none'
         document.getElementById('loginButton').innerText = 'logout'
 
+        // (Gestion du bouton - Modifier)
         const editBtn = document.createElement('span')
         editBtn.classList.add('editButton')
-        editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Modifier'
+        editBtn.innerHTML = '<a href="#modalEdit"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>'
 
         const sectionH2 = document.querySelector('#portfolio h2')
-        sectionH2.style.margin = '0px 0px 147px 0px'
+        sectionH2.style.margin = '110px 0px 100px 110px'
         sectionH2.appendChild(editBtn)
 
+        // (Gestion Header - Mode édition)
         const body = document.querySelector('body')
         const topBar = document.createElement('div')
         topBar.className = 'topBar'
@@ -73,6 +74,40 @@ export async function adminRights() {
         logoutButton.addEventListener('click', function () {
         sessionStorage.removeItem('token')
         window.location.replace('login.html')
-    })
+        })
+
+        // (Afficher/Cacher la Modale)
+        const modal = document.querySelector('#modalWorks')
+        editBtn.addEventListener('click', function () {
+            modal.style.display = 'flex'
+        })
+
+        const modalClose = document.querySelector('#modalClose')
+        modalClose.addEventListener('click', function() {
+            modal.style.display = 'none'
+        })
     }
+}
+
+// MODAL WORKS
+export function createModalWork(modalWork) {
+
+    const modalContent = document.querySelector('.modalContent')
+
+    const modalWorkCard = document.createElement('figure')
+    modalWorkCard.setAttribute('data-id', modalWork.id)
+    modalWorkCard.setAttribute('category-id', modalWork.categoryId)
+    modalWorkCard.className = "modalWork"
+
+    const modalWorkImage = document.createElement('img')
+    modalWorkImage.src = modalWork.imageUrl
+    modalWorkImage.alt = modalWork.title
+
+    const trashSupp = document.createElement('i')
+    trashSupp.id = modalWork.id
+    trashSupp.className = 'fa-solid fa-trash-can'
+
+    modalWorkCard.appendChild(modalWorkImage)
+    modalWorkCard.appendChild(trashSupp)
+    modalContent.appendChild(modalWorkCard)
 }

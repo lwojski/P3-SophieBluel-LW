@@ -24,6 +24,24 @@
             <div class="modalContent">
 
 			</div>
+			<div class="modalForm">
+				<form id="addWorkForm" style="display:none">
+					<i class="fa-regular fa-image"></i>
+					<label for="fileUpload" class="'fileUploadLabel">
+						<button type="button" class="fileUploadButton">
+							<input type="file" id="fileUpload" accept=".jpg, .png" name="file" style="display:none" multiple>
+							<p>+ Ajouter photo</p>
+						</button>
+					</label>
+					<p class="acceptedFiles">jpg, png : 4mo max</p>
+				</form>
+				<form id="addWorkInfoForm" style="display:none">
+					<label for="addTitle">Titre</label>
+					<input type="text" name="addTitle" id="addTitle">
+					<label for="addCategory">Catégorie</label>
+					<input type="text" name="addCategory" id="addCategory">
+			    </form>
+			</div>
 			<div class="buttonAddWork">
             <button id="addWork">Ajouter une photo</button>
 		    </div>

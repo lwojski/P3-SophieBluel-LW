@@ -111,3 +111,56 @@ export function createModalWork(modalWork) {
     modalWorkCard.appendChild(trashSupp)
     modalContent.appendChild(modalWorkCard)
 }
+
+// MODAL ONGLET - AJOUTS DE WORKS
+export function addModalWork(addModalWork) {
+
+    // (GESTION D'AFFICHAGE DES ÉLEMENTS)
+    const modalTitle = document.querySelector('.modalTitle h3')
+    const btnAddModalWork = document.querySelector('#addWork')
+
+    btnAddModalWork.addEventListener('click', (event) => {
+        const modalWorksCards = document.querySelectorAll('.modalWork')
+        modalWorksCards.forEach(card => {
+            card.style.display = 'none'
+        })
+        
+        const modalContents = document.querySelector('.modalContent')
+        const modalForm = document.querySelector('.modalForm')
+
+        modalContents.style.display = 'none'
+        modalForm.style.display = 'flex'
+        modalTitle.innerText = 'Ajout photo'
+        btnAddModalWork.innerText = 'Valider'
+
+        // (Affichage du formulaire d'ajouts d'images)
+        const addWorkForm = document.querySelector('#addWorkForm')
+        addWorkForm.style.display = 'flex'
+
+        // (Affichage du formulaire d'info)
+        const addWorkInfoForm = document.querySelector('#addWorkInfoForm')
+        addWorkInfoForm.style.display = 'flex'
+    
+        // (Création de la flèche de retour en arrière)
+        const echapButton = document.createElement('button')
+        echapButton.innerHTML = '<i class="fa-solid fa-arrow-left"></i>'
+        echapButton.classList.add('echapButton')
+        echapButton.style.display = 'flex'
+
+        modalClose.insertAdjacentElement('beforebegin', echapButton)
+    
+        // (Gestion des éléments après avoir clique sur la flèche de retour)
+        echapButton.addEventListener('click', (event) => {
+            modalWorksCards.forEach(card => {
+                card.style.display = 'block'
+            })
+
+            modalTitle.innerText = 'Galerie photo'
+            btnAddModalWork.innerText = 'Ajouter une photo'
+            echapButton.style.display = 'none'
+            addWorkForm.style.display = 'none'
+            modalContents.style.display = 'flex'
+            modalForm.style.display = 'none'
+        })
+    })
+}

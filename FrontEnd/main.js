@@ -1,5 +1,5 @@
 import {getCategories, getWorks} from "./assets/js/api.js"
-import {createCategory, createCategoryAll, createWork, adminRights, createModalWork} from "./assets/js/element.js"
+import {createCategory, createCategoryAll, createWork, adminRights, createModalWork, addModalWork} from "./assets/js/element.js"
 
 // IMPORT - CATÉGORIES & WORKS
 const categories = await getCategories()
@@ -46,3 +46,6 @@ modalContent.innerHTML = ""
 modalWorks.forEach(modalWork => {
     createModalWork(modalWork)
 })
+
+// MODAL ONGLET - AJOUTS DE WORKS
+await addModalWork()

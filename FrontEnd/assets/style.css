@@ -55,6 +55,8 @@ body {
 	background: #FFFEF8;
 }
 
+/** MODAL **/
+
 .modal {
 	display: flex;
 	align-items: center;
@@ -81,15 +83,20 @@ body {
 .buttonClose {
 	display: flex;
 	justify-content: flex-end;
-	margin-top: 30px;
-	margin-right: 30px;
+	margin: 30px 30px 0px 30px;
+	gap: 525px;
 }
 
-#modalClose {
+.echapButton, #modalClose {
 	cursor: pointer;
 	border: none;
 	background-color: white;
 	padding: 0;
+}
+
+.echapButton .fa-solid {
+	font-size: 21px;
+	width: 21px;
 }
 
 #modalClose .fa-solid {
@@ -124,6 +131,7 @@ h3 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 14px;
+	cursor: pointer;
 }
 
 .modalContent {
@@ -153,6 +161,74 @@ h3 {
 	border-radius: 2px;
 	background-color: black;
 }
+
+.modalForm {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	gap: 10px;
+}
+
+#addWorkForm {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3px;
+	background-color: #E8F1F6;
+	width: 420px;
+	height: 169px;
+}
+
+#addWorkForm .fa-regular {
+	color: #CBD6DC;
+	font-size: 76px;
+	margin-bottom: 10px;
+}
+
+#addWorkInfoForm {
+	flex-direction: column;
+	margin: 0px 50px;
+}
+
+#addWorkInfoForm label {
+	margin: 1.5em 0 1em 0;
+	color: #3D3D3D;
+	font-weight: bold;
+}
+
+#addWorkInfoForm input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 416px;
+	height: 49px;
+}
+
+.fileUploadButton {
+	border: none;
+	border-radius: 50px;
+	background-color: #CBD6DC;
+	font-family: 'Work Sans';
+	color: #306685;
+	font-size: 14px;
+	padding: 10px 33px;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+.fileUploadButton p {
+	font-weight: bold;
+}
+
+.acceptedFiles {
+	font-size: 12px;
+	font-weight: 400;
+	color: #444444;
+}
+
+/** END OF MODAL **/
 
 .topBar {
 	display: flex;

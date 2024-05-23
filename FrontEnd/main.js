@@ -1,5 +1,5 @@
 import {getCategories, getWorks} from "./assets/js/api.js"
-import {createCategory, createCategoryAll, createWork, adminRights, createModalWork, addModalWork} from "./assets/js/element.js"
+import {createCategory, createCategoryAll, createWork, adminRights, createModalWork, addModalWork, selectCategory} from "./assets/js/element.js"
 
 // IMPORT - CATÉGORIES & WORKS
 const categories = await getCategories()
@@ -29,9 +29,7 @@ function filterWorksByCategory(categoryId) {
 const categoriesElement = document.querySelectorAll('button.categorie')
 categoriesElement.forEach(category => {
     category.addEventListener('click', (e) => {
-        console.log(e.currentTarget.value)
         const CategoryId = e.currentTarget.value
-
         filterWorksByCategory(CategoryId)
     })
 })
@@ -49,3 +47,6 @@ modalWorks.forEach(modalWork => {
 
 // MODAL ONGLET - AJOUTS DE WORKS
 await addModalWork()
+
+// AFFICHAGE LISTE CATEGORIES - AJOUTS DE WORKS
+await selectCategory()

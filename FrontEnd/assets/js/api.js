@@ -48,3 +48,15 @@ export async function login () {
         })
     })
 }
+
+// SUPPRESSION DE WORK
+
+export async function deleteWork(id) {
+    let token = sessionStorage.getItem('token')
+    const response = await fetch(`${url}works/${id}`, {
+        method: 'DELETE',
+        headers: {
+            authorization: `Bearer ${token}`
+        },
+    });
+}

@@ -1,3 +1,5 @@
+import {deleteWork, getCategories} from "./api.js"
+
 // CRÉATION ET GESTION DES ÉLEMENTS HTML
 
 // FILTRES & CATÉGORIES
@@ -107,9 +109,26 @@ export function createModalWork(modalWork) {
     trashSupp.id = modalWork.id
     trashSupp.className = 'fa-solid fa-trash-can'
 
+    trashSupp.addEventListener('click', async(e) => {
+        // APPEL POUR SUPPRESSION DE L'API, DE LA MODALE, ET DE LA GALLERIE
+        await deleteWork(modalWork.id)
+        modalWorkCard.remove()
+        removeGalleryWork(modalWork.id)
+    })
+
     modalWorkCard.appendChild(modalWorkImage)
     modalWorkCard.appendChild(trashSupp)
     modalContent.appendChild(modalWorkCard)
+}
+
+// SUPPRESSION D'UN WORK DE LA GALLERIE
+
+function removeGalleryWork(workId) {
+    const workCardId = document.querySelector(`.gallery figure[data-id='${workId}']`)
+
+    if (workCardId) {
+        workCard.remove()
+    }
 }
 
 // MODAL ONGLET - AJOUTS DE WORKS
@@ -162,5 +181,25 @@ export function addModalWork(addModalWork) {
             modalContents.style.display = 'flex'
             modalForm.style.display = 'none'
         })
+    })
+}
+
+// CREATION LISTE CATEGORIES - AJOUTS DE WORKS
+export async function selectCategory() {
+    const listCategory = document.querySelector('#addCategory')
+    const listCategoryApi = await getCategories()
+
+    // (Option par défaut (vide))
+    const DefaultOption = document.createElement('option')
+    listCategory.appendChild(DefaultOption)
+
+    // (Création des options)
+    listCategoryApi.forEach(category => {
+        const option = document.createElement('option')
+        option.innerHTML = category.name
+        option.value = category.name
+        option.id = category.id
+
+        listCategory.appendChild(option)
     })
 }

@@ -1,8 +1,10 @@
 import {deleteWork, getCategories} from "./api.js"
 
-// CRÉATION ET GESTION DES ÉLEMENTS HTML
 
-// FILTRES & CATÉGORIES
+// CRÉATION ET GESTION DES ÉLEMENTS
+
+
+// CREATION FILTRES & CATÉGORIES
 export function createCategory(category) {
     const filters = document.querySelector('.filtres')
     
@@ -21,7 +23,8 @@ export function createCategoryAll() {
     createCategory({id: 0, name:'Tous'})
 }
 
-// WORKS
+
+// CREATION WORKS
 export function createWork(work) {
     const gallery = document.querySelector('.gallery')
     const workCard = document.createElement('figure')
@@ -40,6 +43,21 @@ export function createWork(work) {
     gallery.appendChild(workCard)
 }
 
+
+// FILTRER LES WORKS PAR CATÉGORIES
+export function filterWorksByCategory(categoryId) {
+    const workCards = document.querySelectorAll('.gallery figure')
+    workCards.forEach((workCard) => {
+        const workCategoryId = workCard.getAttribute('category-id')
+        if (workCategoryId == categoryId || categoryId === '0') {
+            workCard.style.display = 'block'
+        } else {
+            workCard.style.display = 'none'
+        }
+    })
+}
+
+
 // ADMIN MODE
 export async function adminRights() {
     const token = sessionStorage.getItem('token')
@@ -52,7 +70,7 @@ export async function adminRights() {
         // (Gestion du bouton - Modifier)
         const editBtn = document.createElement('span')
         editBtn.classList.add('editButton')
-        editBtn.innerHTML = '<a href="#modalEdit"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>'
+        editBtn.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> modifier</a>'
 
         const sectionH2 = document.querySelector('#portfolio h2')
         sectionH2.style.margin = '110px 0px 100px 110px'
@@ -78,7 +96,7 @@ export async function adminRights() {
         window.location.replace('login.html')
         })
 
-        // (Afficher/Cacher la Modale)
+        // (Ouvrir/Fermer la Modale)
         const modal = document.querySelector('#modalWorks')
         editBtn.addEventListener('click', function () {
             modal.style.display = 'flex'
@@ -88,10 +106,27 @@ export async function adminRights() {
         modalClose.addEventListener('click', function() {
             modal.style.display = 'none'
         })
+
+        const modalWrapper = document.querySelector('.modal-wrapper')
+        document.addEventListener('click', function (e) {
+            if (modal.style.display === 'flex' && !modalWrapper.contains(e.target) && e.target !== editBtn) {
+                modal.style.display = 'none';
+            }
+        })
     }
 }
 
-// MODAL WORKS
+
+// SUPPRESSION D'UN WORK DE LA GALLERIE
+function removeGalleryWork(workId) {
+    const workCardId = document.querySelector(`.gallery figure[data-id='${workId}']`)
+    if (workCardId) {
+        workCardId.remove()
+    }
+}
+
+
+// CREATION MODAL WORKS & POUBELLE
 export function createModalWork(modalWork) {
 
     const modalContent = document.querySelector('.modalContent')
@@ -109,8 +144,8 @@ export function createModalWork(modalWork) {
     trashSupp.id = modalWork.id
     trashSupp.className = 'fa-solid fa-trash-can'
 
+    // (Supression d'un work (de l'API, la GALLERIE et la MODALE) en cliquant sur la poubelle)
     trashSupp.addEventListener('click', async(e) => {
-        // APPEL POUR SUPPRESSION DE L'API, DE LA MODALE, ET DE LA GALLERIE
         await deleteWork(modalWork.id)
         modalWorkCard.remove()
         removeGalleryWork(modalWork.id)
@@ -121,15 +156,6 @@ export function createModalWork(modalWork) {
     modalContent.appendChild(modalWorkCard)
 }
 
-// SUPPRESSION D'UN WORK DE LA GALLERIE
-
-function removeGalleryWork(workId) {
-    const workCardId = document.querySelector(`.gallery figure[data-id='${workId}']`)
-
-    if (workCardId) {
-        workCard.remove()
-    }
-}
 
 // MODAL ONGLET - AJOUTS DE WORKS
 export function addModalWork(addModalWork) {
@@ -160,10 +186,8 @@ export function addModalWork(addModalWork) {
         const addWorkInfoForm = document.querySelector('#addWorkInfoForm')
         addWorkInfoForm.style.display = 'flex'
     
-        // (Création de la flèche de retour en arrière)
-        const echapButton = document.createElement('button')
-        echapButton.innerHTML = '<i class="fa-solid fa-arrow-left"></i>'
-        echapButton.classList.add('echapButton')
+        // (Affichage de la flèche de retour en arrière)
+        const echapButton = document.querySelector('#echapButton')
         echapButton.style.display = 'flex'
 
         modalClose.insertAdjacentElement('beforebegin', echapButton)
@@ -171,20 +195,21 @@ export function addModalWork(addModalWork) {
         // (Gestion des éléments après avoir clique sur la flèche de retour)
         echapButton.addEventListener('click', (event) => {
             modalWorksCards.forEach(card => {
-                card.style.display = 'block'
+                card.style.display = 'flex'
             })
 
             modalTitle.innerText = 'Galerie photo'
             btnAddModalWork.innerText = 'Ajouter une photo'
             echapButton.style.display = 'none'
             addWorkForm.style.display = 'none'
-            modalContents.style.display = 'flex'
+            modalContents.style.display = 'grid'
             modalForm.style.display = 'none'
         })
     })
 }
 
-// CREATION LISTE CATEGORIES - AJOUTS DE WORKS
+
+// CREATION LISTE CATEGORIES POUR AJOUTS DE WORKS
 export async function selectCategory() {
     const listCategory = document.querySelector('#addCategory')
     const listCategoryApi = await getCategories()

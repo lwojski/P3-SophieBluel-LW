@@ -47,6 +47,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -58,7 +59,7 @@ body {
 /** MODAL **/
 
 .modal {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	position: fixed;
@@ -70,7 +71,6 @@ body {
 }
 
 .modal-wrapper {
-	gap: 50px;
 	border-radius: 10px;
 	background-color: white;
 	width: 630px;
@@ -80,21 +80,25 @@ body {
 	overflow: auto;
 }
 
-.buttonClose {
+.modalHeaderButton {
 	display: flex;
 	justify-content: flex-end;
 	margin: 30px 30px 0px 30px;
 	gap: 525px;
 }
 
-.echapButton, #modalClose {
+#echapButton {
+	display: none;
+}
+
+#echapButton, #modalClose {
 	cursor: pointer;
 	border: none;
 	background-color: white;
 	padding: 0;
 }
 
-.echapButton .fa-solid {
+#echapButton .fa-solid {
 	font-size: 21px;
 	width: 21px;
 }
@@ -135,14 +139,16 @@ h3 {
 }
 
 .modalContent {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	row-gap: 30px;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-row-gap: 30px;
 	margin: 50px 105px 50px 105px;
 }
 
 .modalWork {
+	display: flex;
+	justify-content: center;
 	position: relative;
 }
 
@@ -153,12 +159,13 @@ h3 {
 
 .modalWork i {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 5px;
+	right: 9px;
 	cursor: pointer;
 	color: white;
 	font-size: 11px;
 	border-radius: 2px;
+	padding: 3px 3.70px;
 	background-color: black;
 }
 
@@ -171,6 +178,7 @@ h3 {
 }
 
 #addWorkForm {
+	display: none;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -187,6 +195,7 @@ h3 {
 }
 
 #addWorkInfoForm {
+	display: none;
 	flex-direction: column;
 	margin: 0px 50px;
 }
@@ -225,6 +234,10 @@ h3 {
 	margin-bottom: 5px;
 }
 
+.fileUploadButton input {
+	display: none;
+}
+
 .fileUploadButton p {
 	font-weight: bold;
 }
@@ -252,8 +265,9 @@ h3 {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
+
 section {
 	margin: 50px 0
 }
@@ -285,10 +299,14 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	gap: 40px;
 }
+
+.navLink.active {
+	font-weight: bold;
+}
+
 nav li {
-	padding: 0 10px;
 	font-size: 1.2em;
 }
 
@@ -297,16 +315,25 @@ nav a {
 	color: inherit;
 }
 
+nav img {
+	width: 22px;
+	height: 22px;
+	margin-top: 3px;
+}
+
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -316,6 +343,7 @@ li:hover {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -323,12 +351,12 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 2em;
-	margin-left: 20px;
 }
 
 .editButton {
@@ -337,11 +365,7 @@ li:hover {
 	margin-left: 35px;
 	font-size: 14px;
 	font-weight: 400;
-}
-
-.editButton a {
-	text-decoration: none;
-	color: inherit;
+	cursor: pointer;
 }
 
 .editButton .fa-regular {
@@ -354,6 +378,7 @@ li:hover {
 	gap: 10px;
 	margin-bottom: 50px;
 }
+
 .categorie {
 	display: flex;
 	border: 1px solid #1D6154;
@@ -369,9 +394,18 @@ li:hover {
 	cursor: pointer;
 }
 
+.selectedCategory {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
 .categorie:hover {
 	background-color: #1D6154;
 	color: #FFFEF8;
+}
+
+.gallery figcaption {
+	margin-top: 5px;
 }
 
 /***** CONNEXION *****/
@@ -431,17 +465,21 @@ li:hover {
 	width: 100%;
 
 }
+
 #contact {
-	width: 50%;
-margin: auto;
+	width: 35%;
+	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -450,14 +488,17 @@ margin: auto;
 }
 
 #contact input {
-	height: 50px;
+	height: 36px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-size: 14px;
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);

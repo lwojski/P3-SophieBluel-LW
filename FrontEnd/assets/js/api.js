@@ -2,11 +2,13 @@
 
 const url='http://localhost:5678/api/'
 
+
 // CATÉGORIES
 export async function getCategories() {
     return fetch(`${url}categories`)
         .then(response => response.json())
 }
+
 
 // WORKS
 export async function getWorks() {
@@ -14,9 +16,9 @@ export async function getWorks() {
         .then(response => response.json())
 }
 
+
 // LOGIN
 export async function login () {
-
     document.addEventListener('submit', (event) => {
         event.preventDefault()
         let formInfo = {
@@ -49,8 +51,8 @@ export async function login () {
     })
 }
 
-// SUPPRESSION DE WORK
 
+// SUPPRESSION DE WORK
 export async function deleteWork(id) {
     let token = sessionStorage.getItem('token')
     const response = await fetch(`${url}works/${id}`, {

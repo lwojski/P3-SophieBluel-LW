@@ -13,29 +13,30 @@
 	<script src="main.js" defer async type="module"></script>
 </head>
 <body>
-	<aside id="modalWorks" class="modal" aria-hidden="true" aria-labelledby="modalTitle" style="display:none;">
+	<aside id="modalWorks" class="modal" aria-hidden="true" aria-labelledby="modalTitle">
 		<div class="modal-wrapper" id="modalEdit">
-			<div class="buttonClose">
-			<button id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+			<div class="modalHeaderButton">
+				<button id="echapButton"><i class="fa-solid fa-arrow-left"></i></button>
+				<button id="modalClose"><i class="fa-solid fa-xmark"></i></button>
 		    </div>
 			<div class="modalTitle">
-			<h3>Galerie photo</h3>
+				<h3>Galerie photo</h3>
 		    </div>
             <div class="modalContent">
 
 			</div>
 			<div class="modalForm">
-				<form id="addWorkForm" style="display:none">
+				<form id="addWorkForm">
 					<i class="fa-regular fa-image"></i>
 					<label for="fileUpload" class="'fileUploadLabel">
 						<button type="button" class="fileUploadButton">
-							<input type="file" id="fileUpload" accept=".jpg, .png" name="file" style="display:none">
+							<input type="file" id="fileUpload" accept=".jpg, .png" name="file">
 							<p>+ Ajouter photo</p>
 						</button>
 					</label>
 					<p class="acceptedFiles">jpg, png : 4mo max</p>
 				</form>
-				<form id="addWorkInfoForm" style="display:none">
+				<form id="addWorkInfoForm">
 					<label for="addTitle">Titre</label>
 					<input type="text" name="addTitle" id="addTitle">
 					<label for="addCategory">Catégorie</label>
@@ -52,7 +53,7 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li><a href="index.html">projets</a></li>
+			<li><a href="index.html" class="navLink active">projets</a></li>
 			<li>contact</li>
 			<li><a href="login.html" id="loginButton">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>

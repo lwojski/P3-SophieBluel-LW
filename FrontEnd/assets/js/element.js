@@ -1,4 +1,4 @@
-import {deleteWork, getCategories} from "./api.js"
+import {getCategories, deleteWork, addNewWork} from "./api.js"
 
 
 // CRÉATION ET GESTION DES ÉLEMENTS
@@ -154,6 +154,8 @@ export function createModalWork(modalWork) {
     modalWorkCard.appendChild(modalWorkImage)
     modalWorkCard.appendChild(trashSupp)
     modalContent.appendChild(modalWorkCard)
+
+    return modalWorkCard
 }
 
 
@@ -226,5 +228,108 @@ export async function selectCategory() {
         option.id = category.id
 
         listCategory.appendChild(option)
+    })
+}
+
+
+// GESTION DE L'UPLOAD
+export async function upload() {
+    const fileUpload = document.querySelector('#fileUpload')
+    const addWorkForm = document.querySelector('#addWorkForm')
+    const imagePreview = document.createElement('img')
+    const previewPlaceholder = document.querySelector('#addWorkForm i')
+    const acceptedFiles = document.querySelector('.acceptedFiles')
+    const fileUploadButton = document.querySelector('.fileUploadButton')
+    
+    fileUploadButton.addEventListener('click', function() {
+        fileUpload.click()
+    })
+
+    fileUpload.addEventListener('change', function (e) {
+        const file = e.target.files[0]
+
+        if (file) {
+            // (Vérification de la taille du fichier)
+            if (file.size > 4 * 1024 * 1024) {
+                alert('Le fichier est trop volumineux. La taille maximum autorisée est de 4 Mo.')
+                fileUpload.value = ''
+                return
+            }
+            
+            // (Affichage de la preview de l'image)
+            const reader = new FileReader
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result
+                imagePreview.classList.add('image-preview')
+                
+                // (Cacher les élements pour laisser place à la preview de l'image)
+                if (previewPlaceholder) {
+                    previewPlaceholder.style.display = 'none'
+                }
+                if (fileUploadButton) {
+                    fileUploadButton.style.display = 'none'
+                }
+                if (acceptedFiles) {
+                    acceptedFiles.style.display = 'none'
+                }
+                addWorkForm.insertBefore(imagePreview, addWorkForm.firstChild)
+            }
+            reader.readAsDataURL(file);
+        }
+    })
+
+    // (Pré-requis du formulaire avant d'accepter l'upload)
+    const addWorkButton = document.querySelector('#addWork')
+    const addTitle = document.querySelector('#addTitle')
+    const addCategory = document.querySelector('#addCategory')
+
+    addWorkButton.addEventListener('click', async function (e) {
+        e.preventDefault()
+
+        let errorMessage = ''
+    
+        if (!fileUpload.files[0]) {
+            errorMessage += 'Veuillez sélectionner une photo.\n'
+        }
+        if (!addTitle.value.trim()) {
+            errorMessage += 'Veuillez renseigner un titre.\n'
+        }
+        if (!addCategory.value.trim()) {
+            errorMessage += 'Veuillez sélectionner une catégorie.\n'
+        }
+
+        if (errorMessage) {
+            alert(errorMessage)
+        } else {
+            const formData = new FormData();
+            const selectedCategory = addCategory.options[addCategory.selectedIndex];
+
+            formData.append('title', addTitle.value);
+            formData.append('category', selectedCategory.id)
+            formData.append('image', fileUpload.files[0]);
+
+            // (Appel de l'API Fetch)
+            const newWorkCard = await addNewWork(formData)
+
+            if (newWorkCard) {
+                // (Ajout de la nouvelle photo à la galerie)
+                createWork(newWorkCard)
+
+                // (Ajout de la nouvelle photo à la modale)
+                createModalWork(newWorkCard)
+
+                // (Réinitialisation du formulaire après l'ajout)
+                fileUpload.value = ''
+                addTitle.value = ''
+                addCategory.selectedIndex = 0
+                if (imagePreview) {
+                    imagePreview.remove()
+                    previewPlaceholder.style.display = 'block'
+                    fileUploadButton.style.display = 'flex'
+                    acceptedFiles.style.display = 'flex'
+                }
+                alert('Photo ajoutée avec succès !')
+            }
+        }
     })
 }

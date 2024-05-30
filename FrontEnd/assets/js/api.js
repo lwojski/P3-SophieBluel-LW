@@ -62,3 +62,19 @@ export async function deleteWork(id) {
         },
     });
 }
+
+
+// AJOUT DE WORK
+export async function addNewWork(formData) {
+    let token = sessionStorage.getItem('token')
+    const response = await fetch(`${url}works`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token}`
+        },
+        body: formData
+    })
+    if (!response.ok) {
+        throw new Error('Erreur lors de l\'ajout du travail.')
+    }
+}

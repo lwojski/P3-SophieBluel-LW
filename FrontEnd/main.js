@@ -1,5 +1,5 @@
 import {getCategories, getWorks} from "./assets/js/api.js"
-import {createCategory, createCategoryAll, createWork, filterWorksByCategory, adminRights, createModalWork, addModalWork, selectCategory} from "./assets/js/element.js"
+import {createCategory, createCategoryAll, createWork, filterWorksByCategory, adminRights, createModalWork, addModalWork, selectCategory, upload} from "./assets/js/element.js"
 
 
 // IMPORT - CATÉGORIES & WORKS
@@ -52,3 +52,7 @@ await addModalWork()
 
 // AFFICHAGE LISTE CATEGORIES - AJOUTS DE WORKS
 await selectCategory()
+
+
+// UPLOAD
+await upload()

@@ -32,7 +32,7 @@ categoriesElement.forEach(category => {
 })
 
 
-// IMPORT ADMIN
+// ADMIN MODE
 await adminRights()
 
 

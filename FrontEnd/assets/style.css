@@ -48,6 +48,8 @@ table {
 }
 /** end reset css**/
 
+
+/***** REGLES GENERALES *****/
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -56,8 +58,35 @@ body {
 	background: #FFFEF8;
 }
 
-/** MODAL **/
+section {
+	margin: 50px 0
+}
 
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+
+
+/***** MODAL *****/
 .modal {
 	display: none;
 	align-items: center;
@@ -79,7 +108,7 @@ body {
 	max-height: 100vh;
 	overflow: auto;
 }
-
+/** (modal header) **/
 .modalHeaderButton {
 	display: flex;
 	justify-content: flex-end;
@@ -107,7 +136,7 @@ body {
 	font-size: 24px;
 	width: 24px;
 }
-
+/** (modal - titre) **/
 .modalTitle {
 	display: flex;
 	justify-content: center;
@@ -118,32 +147,17 @@ h3 {
 	font-size: 26px;
 	line-height: 30px;
 }
-
-.buttonAddWork {
-	display: flex;
-	justify-content: center;
-	margin-top: 100px;
-}
-
-#addWork {
-	border: none;
-	border-radius: 60px;
-	background-color: #1D6154;
-	color: white;
-	width: 237px;
-	padding: 10px 0px;
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 14px;
-	cursor: pointer;
-}
-
+/** (modal - galerie) **/
 .modalContent {
 	display: grid;
 	justify-content: center;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-row-gap: 30px;
-	margin: 50px 105px 50px 105px;
+	margin: 50px 98px 40px 98px;
+	max-height: 38vh;
+	overflow-y: auto;
+	border-bottom: solid 2px #B3B3B3;
+	padding-bottom: 60px;
 }
 
 .modalWork {
@@ -168,13 +182,15 @@ h3 {
 	padding: 3px 3.70px;
 	background-color: black;
 }
-
+/** (modal - formulaire d'ajout de work) **/
 .modalForm {
 	display: none;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 35px;
+	margin: 50px 105px 40px 105px;
 	gap: 10px;
+	border-bottom: solid 2px #B3B3B3;
+	padding-bottom: 46px;
 }
 
 #addWorkForm {
@@ -192,34 +208,6 @@ h3 {
 	color: #CBD6DC;
 	font-size: 76px;
 	margin-bottom: 10px;
-}
-
-#addWorkInfoForm {
-	display: none;
-	flex-direction: column;
-	margin: 0px 50px;
-}
-
-#addWorkInfoForm label {
-	margin: 1.5em 0 1em 0;
-	color: #3D3D3D;
-	font-weight: bold;
-}
-
-#addWorkInfoForm input {
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	width: 416px;
-	height: 49px;
-}
-
-#addWorkInfoForm select {
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	width: 420px;
-	height: 51px;
 }
 
 .fileUploadButton {
@@ -253,8 +241,63 @@ h3 {
 	max-height: 169px;
 }
 
-/** END OF MODAL **/
+#addWorkInfoForm {
+	display: none;
+	flex-direction: column;
+	width: 420px;
+}
 
+#addWorkInfoForm label {
+	margin: 1.5em 0 1em 0;
+	color: #3D3D3D;
+	font-weight: bold;
+}
+
+#addTitle, #addCategory {
+	border: none;
+	outline: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-family: 'Work Sans';
+	font-size: 14px;
+	color: #444444;
+	padding: 0px 15px;
+	height: 51px;
+	-webkit-appearance: none;
+}
+
+#addCategory {
+	background-image: url('./icons/chevron-down-24.png');
+	background-repeat: no-repeat;
+    background-position: right 25px center;
+    background-size: 12px 12px;
+    cursor: pointer;
+}
+/** (modal buttons) **/
+.buttonAddWork {
+	display: flex;
+	justify-content: center;
+}
+
+#addWork, #addWorkConfirm {
+	border: none;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: white;
+	width: 237px;
+	padding: 10px 0px;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#addWorkConfirm {
+	display: none;
+}
+/*** END OF MODAL ***/
+
+
+/***** HEADER *****/
 .topBar {
 	display: flex;
 	justify-content: center;
@@ -273,33 +316,8 @@ header {
 	margin: 50px 0;
 }
 
-section {
-	margin: 50px 0
-}
 
-h1{
-	display: flex;
-	flex-direction: column;
-	font-family: 'Syne';
-	font-size: 22px;
-	font-weight: 800;
-	color: #B1663C
-}
-
-h1 > span {
-	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
-;
-}
-
-h2{
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 30px;
-	color: #1D6154
-}
-
+/***** BARRE DE NAVIGATION *****/
 nav ul {
 	display: flex;
 	align-items: center;
@@ -330,91 +348,8 @@ li:hover {
 	color: #B1663C;
 }
 
-#introduction {
-	display: flex;
-	align-items: center;
-}
-
-#introduction figure {
-	flex: 1
-}
-
-#introduction img {
-	display: block;
-	margin: auto;
-	width: 80%;
-}
-
-#introduction article {
-	flex: 1
-}
-
-#introduction h2 {
-	margin-bottom: 1em;
-}
-
-#introduction p {
-	margin-bottom: 0.5em;
-}
-
-#portfolio h2 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 2em;
-}
-
-.editButton {
-	font-family: 'Work Sans';
-	color: #000000;
-	margin-left: 35px;
-	font-size: 14px;
-	font-weight: 400;
-	cursor: pointer;
-}
-
-.editButton .fa-regular {
-	font-size: 16px;
-}
-
-.filtres {
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	margin-bottom: 50px;
-}
-
-.categorie {
-	display: flex;
-	border: 1px solid #1D6154;
-	border-radius: 60px;
-	color: #1D6154;
-	background-color: #FFFEF8;
-	font-size: 16px;
-	font-weight: 700;
-	font-family: 'Syne';
-	align-items: center;
-	height: 37px;
-	padding: 10px 20px;
-	cursor: pointer;
-}
-
-.selectedCategory {
-	background-color: #1D6154;
-	color: #FFFEF8;
-}
-
-.categorie:hover {
-	background-color: #1D6154;
-	color: #FFFEF8;
-}
-
-.gallery figcaption {
-	margin-top: 5px;
-}
 
 /***** CONNEXION *****/
-
 .connexion {
 	display: flex;
 	flex-direction: column;
@@ -456,7 +391,92 @@ li:hover {
 	color: inherit;
 }
 
-/***** end connexion *****/
+
+/***** SECTION INTRODUCTION *****/
+#introduction {
+	display: flex;
+	align-items: center;
+}
+
+#introduction figure {
+	flex: 1
+}
+
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1
+}
+
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+
+
+/***** SECTION PORTFOLIO *****/
+#portfolio h2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+/** (bouton modifier) **/
+.editButton {
+	font-family: 'Work Sans';
+	color: #000000;
+	margin-left: 35px;
+	font-size: 14px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.editButton .fa-regular {
+	font-size: 16px;
+}
+/** (filtres et catégories) **/
+.filtres {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 50px;
+}
+
+.categorie {
+	display: flex;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	color: #1D6154;
+	background-color: #FFFEF8;
+	font-size: 16px;
+	font-weight: 700;
+	font-family: 'Syne';
+	align-items: center;
+	height: 37px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.selectedCategory {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+
+.categorie:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+}
+/** (gallerie) **/
+.gallery figcaption {
+	margin-top: 5px;
+}
 
 .gallery {
 	width: 100%;
@@ -471,6 +491,8 @@ li:hover {
 
 }
 
+
+/***** SECTION CONTACT *****/
 #contact {
 	width: 35%;
 	margin: auto;
@@ -524,7 +546,10 @@ input[type="submit"]{
 	height: 36px;
 	font-size: 14px;
 }
+/*** END SECTION CONTACT ***/
 
+
+/***** FOOTER *****/
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;

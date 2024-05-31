@@ -165,20 +165,21 @@ export function addModalWork(addModalWork) {
     // (GESTION D'AFFICHAGE DES ÉLEMENTS)
     const modalTitle = document.querySelector('.modalTitle h3')
     const btnAddModalWork = document.querySelector('#addWork')
+    const btnValider = document.querySelector('#addWorkConfirm')
+    const modalContents = document.querySelector('.modalContent')
+    const modalForm = document.querySelector('.modalForm')
 
     btnAddModalWork.addEventListener('click', (event) => {
         const modalWorksCards = document.querySelectorAll('.modalWork')
         modalWorksCards.forEach(card => {
             card.style.display = 'none'
         })
-        
-        const modalContents = document.querySelector('.modalContent')
-        const modalForm = document.querySelector('.modalForm')
 
         modalContents.style.display = 'none'
         modalForm.style.display = 'flex'
         modalTitle.innerText = 'Ajout photo'
-        btnAddModalWork.innerText = 'Valider'
+        btnAddModalWork.style.display = 'none'
+        btnValider.style.display = 'block'
 
         // (Affichage du formulaire d'ajouts d'images)
         const addWorkForm = document.querySelector('#addWorkForm')
@@ -201,7 +202,8 @@ export function addModalWork(addModalWork) {
             })
 
             modalTitle.innerText = 'Galerie photo'
-            btnAddModalWork.innerText = 'Ajouter une photo'
+            btnAddModalWork.style.display = 'block'
+            btnValider.style.display = 'none'
             echapButton.style.display = 'none'
             addWorkForm.style.display = 'none'
             modalContents.style.display = 'grid'
@@ -279,11 +281,11 @@ export async function upload() {
     })
 
     // (Pré-requis du formulaire avant d'accepter l'upload)
-    const addWorkButton = document.querySelector('#addWork')
+    const addWorkValider = document.querySelector('#addWorkConfirm')
     const addTitle = document.querySelector('#addTitle')
     const addCategory = document.querySelector('#addCategory')
 
-    addWorkButton.addEventListener('click', async function (e) {
+    addWorkValider.addEventListener('click', async function (e) {
         e.preventDefault()
 
         let errorMessage = ''

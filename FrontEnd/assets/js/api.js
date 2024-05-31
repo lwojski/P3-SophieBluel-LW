@@ -77,4 +77,5 @@ export async function addNewWork(formData) {
     if (!response.ok) {
         throw new Error('Erreur lors de l\'ajout du travail.')
     }
+    return response.json()
 }

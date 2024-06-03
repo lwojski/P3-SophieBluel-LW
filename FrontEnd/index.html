@@ -10,10 +10,10 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="main.js" defer async type="module"></script>
+	<script src="main.js" async type="module"></script>
 </head>
 <body>
-	<aside id="modalWorks" class="modal" aria-hidden="true" aria-labelledby="modalTitle">
+	<aside id="modalWorks" class="modal" aria-hidden="true">
 		<div class="modal-wrapper" id="modalEdit">
 			<div class="modalHeaderButton">
 				<button id="echapButton"><i class="fa-solid fa-arrow-left"></i></button>
@@ -28,12 +28,10 @@
 			<div class="modalForm">
 				<form id="addWorkForm">
 					<i class="fa-regular fa-image"></i>
-					<label for="fileUpload" class="'fileUploadLabel">
-						<button type="button" class="fileUploadButton">
-							<input type="file" id="fileUpload" accept=".jpg, .png" name="file">
-							<p>+ Ajouter photo</p>
-						</button>
-					</label>
+					<button type="button" class="fileUploadButton">
+						<span>+ Ajouter photo</span>
+					</button>
+					<input type="file" id="fileUpload" accept=".jpg, .png" name="file">
 					<p class="acceptedFiles">jpg, png : 4mo max</p>
 				</form>
 				<form id="addWorkInfoForm">

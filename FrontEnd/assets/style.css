@@ -222,11 +222,11 @@ h3 {
 	margin-bottom: 5px;
 }
 
-.fileUploadButton input {
+#fileUpload {
 	display: none;
 }
 
-.fileUploadButton p {
+.fileUploadButton span {
 	font-weight: bold;
 }
 

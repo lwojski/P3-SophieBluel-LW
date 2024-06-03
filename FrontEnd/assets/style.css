@@ -59,7 +59,7 @@ body {
 }
 
 section {
-	margin: 50px 0
+	margin: 100px 0px
 }
 
 h1{
@@ -153,10 +153,10 @@ h3 {
 	justify-content: center;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-row-gap: 30px;
-	margin: 50px 98px 40px 98px;
+	margin: 50px 105px 40px 105px;
 	max-height: 38vh;
 	overflow-y: auto;
-	border-bottom: solid 2px #B3B3B3;
+	border-bottom: solid 1px #B3B3B3;
 	padding-bottom: 60px;
 }
 
@@ -262,7 +262,9 @@ h3 {
 	color: #444444;
 	padding: 0px 15px;
 	height: 51px;
-	-webkit-appearance: none;
+	appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 #addCategory {
@@ -422,6 +424,10 @@ li:hover {
 
 
 /***** SECTION PORTFOLIO *****/
+#portfolio {
+	margin-bottom: 50px;
+}
+
 #portfolio h2 {
 	display: flex;
 	align-items: center;
@@ -518,8 +524,11 @@ li:hover {
 	height: 36px;
 	font-size: 1.2em;
 	border: none;
+	padding-right: 15px;
+	padding-left: 15px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	font-size: 14px;
+	outline: none;
 }
 
 #contact label {
@@ -528,7 +537,9 @@ li:hover {
 
 #contact textarea {
 	border: none;
+	padding: 10px 12px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	outline: none;
 }
 
 input[type="submit"]{

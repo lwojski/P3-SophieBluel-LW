@@ -280,11 +280,25 @@ export async function upload() {
         }
     })
 
-    // (Pré-requis du formulaire avant d'accepter l'upload)
+    // (Gestion de la couleur du bouton de validation)
     const addWorkValider = document.querySelector('#addWorkConfirm')
     const addTitle = document.querySelector('#addTitle')
     const addCategory = document.querySelector('#addCategory')
 
+    function updateButtonColor() {
+        if (!fileUpload.files[0] || !addTitle.value.trim() || !addCategory.value.trim()) {
+            addWorkValider.style.backgroundColor = '#A7A7A7'
+        } else {
+            addWorkValider.style.backgroundColor = ''
+        }
+    }
+
+    fileUpload.addEventListener('change', updateButtonColor)
+    addTitle.addEventListener('input', updateButtonColor)
+    addCategory.addEventListener('change', updateButtonColor)
+    updateButtonColor()
+
+    // (Affichage du message d'erreur OU de confirmation après avoir cliqué sur le bouton de validation)
     addWorkValider.addEventListener('click', async function (e) {
         e.preventDefault()
 
@@ -302,6 +316,7 @@ export async function upload() {
 
         if (errorMessage) {
             alert(errorMessage)
+        // (Upload et ajout de la photo)
         } else {
             const formData = new FormData();
             const selectedCategory = addCategory.options[addCategory.selectedIndex];
